@@ -65,13 +65,69 @@
 
 // print datatype
 
+// #include <iostream>
+
+// using namespace std;
+
+// int main(void)
+// {
+//     int x = 3;
+//     char c = 'c';
+//     cout << x << c << endl;
+// }
+
+
+// bitwize
+
+
+// #include <iostream>
+// using namespace std;
+
+// int main()
+// {
+//     int a = 10;      // a = 10 = 00000000000000000000000000001010
+//     int b = 75;      // b = 75 = 00000000000000000000000000001011
+ 
+//     int c = a ^ b;   // شرحنا كيف سيتم الحصول على الناتج تحت نتيجة التشغيل
+ 
+//     cout << a << " & " << b << " = " << c;
+
+//     return 0;
+// }
+
+
+
+
+
+
+
+// loop in cpp
+
+// #include <iostream>
+
+// using namespace std;
+
+// int main(void)
+// {
+//     int i = 0;
+//     // for (int i = 0 ; i < 10 ; i++)
+//     //     cout << "hello world \n";
+
+//     while (i < 10)
+//     {
+//         cout << "hello world \n";
+//         i++;
+//     }
+// }
+
+
 #include <iostream>
 
 using namespace std;
 
 int main(void)
 {
-    int x = 3;
-    char c = 'c';
-    cout << x << c << endl;
+    string s = "hello world ";
+    cout << s ;
+    return 0 ;
 }
