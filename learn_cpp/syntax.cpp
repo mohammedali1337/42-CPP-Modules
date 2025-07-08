@@ -121,13 +121,29 @@
 // }
 
 
+// #include <iostream>
+
+// using namespace std;
+
+// int main(void)
+// {
+//     string s = "hello world ";
+//     cout << s ;
+//     return 0 ;
+// }
+
 #include <iostream>
 
 using namespace std;
 
 int main(void)
 {
-    string s = "hello world ";
-    cout << s ;
-    return 0 ;
+    int a, b;
+    cout << "enter a: ";
+    cin >> a;
+    cout << "enter b: ";
+    cin >> b;
+
+    cout << "a + b = " << a + b;
+    return 0;
 }
