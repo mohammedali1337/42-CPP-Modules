@@ -191,9 +191,9 @@ class Car {
         }
         void    display_info()
         {
-            cout << "brand : " << brand << endl;
-            cout << "model : " << model << endl;
-            cout << "year : " << year << endl;
+            cout << "brand : " << getBrand() << endl;
+            cout << "model : " << getmodel() << endl;
+            cout << "year : " << getyear() << endl;
             cout << "is expired " << (isexpired() ? "yes" : "no") << endl << "____________________\n";
         }
 
@@ -202,11 +202,11 @@ class Car {
     {
         return brand;
     }
-    string setyear()
+    string getyear()
     {
         return brand;
     }
-    string setmodel()
+    string getmodel()
     {
         return brand;
     }
@@ -230,6 +230,11 @@ class ElectricCar : public Car {
         int batteryCapacity;
 
     public:
+        ElectricCar(int eyear, string ebrand, string emodel, int b):Car(eyear, ebrand , emodel)
+        {
+            
+            setBatteryCapacity(b);
+        }
         void    setBatteryCapacity(int b)
         {
             batteryCapacity = b;
@@ -238,18 +243,13 @@ class ElectricCar : public Car {
 
 int main(void)
 {
-    Car car1(2000, "nissan", "qqqqq");
-    Car car2(2005, "bmw", "jjjjjjjj");
-    ElectricCar ecar ;
+    ElectricCar ecar(2000, "nissan", "qqqqq", 44444) ;
     
+    ecar.display_info();
 
-
-    car1.display_info();
-    car2.display_info();
 
     cout << "++++++++++++++++++++++++++++\n";
 
-    cout << car1.getBrand() << endl;
 }
 
 
