@@ -10,7 +10,7 @@ void    Contact::setlastName(std::string ln)
 }
 void    Contact::setnickname(std::string nn)
 {
-    this->firstName = nn;
+     this->nickname = nn;
 }
 void    Contact::setphoneNumber(std::string ph)
 {
@@ -22,24 +22,24 @@ void    Contact::setdarkestSecret(std::string ds)
 }
 
 
-std::string    getFirstName()
+std::string    Contact::getFirstName() const
 {
-    return (this->firstName)
+    return (this->firstName);
 }
-std::string    getlastName()
+std::string    Contact::getlastName() const
 {
-    return (this->lastName)
+    return (this->lastName);
 }
-std::string    getnickname()
+std::string    Contact::getnickname() const
 {
-    return (this->nickname)
+    return (this->nickname);
 }
-std::string    getphoneNumber()
+std::string    Contact::getphoneNumber() const
 {
-    return (this->phoneNumber)
+    return (this->phoneNumber);
 }
-std::string    getdarkestSecret()
+std::string    Contact::getdarkestSecret() const
 {
-    return (this->darkestSecret)
+    return (this->darkestSecret);
 }
 
