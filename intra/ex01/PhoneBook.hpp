@@ -11,6 +11,7 @@ class PhoneBook
         int     contact_count;
         int     index;
     public:
+        PhoneBook();
         void    searchContact();
         void    addContact();
 };

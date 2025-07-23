@@ -21,7 +21,6 @@ void    Contact::setdarkestSecret(std::string ds)
     this->darkestSecret = ds;
 }
 
-
 std::string    Contact::getFirstName() const
 {
     return (this->firstName);

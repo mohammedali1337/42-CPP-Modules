@@ -3,13 +3,17 @@
 int main(void)
 {
     std::string input;
+    PhoneBook ph;
     while (true)
     {
         if (!std::getline(std::cin, input))
             return 1;
         if (input == "ADD")
-            
-        // else if (input == "SEARCH")
-        // else if (input == "EXIT")
+            ph.addContact();
+        else if (input == "SEARCH")
+            ph.searchContact();
+        else if (input == "EXIT")
+            break;
     }
+    return 0;
 }
