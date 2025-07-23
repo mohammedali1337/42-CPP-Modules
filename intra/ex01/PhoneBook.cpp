@@ -44,15 +44,18 @@ void    PhoneBook::searchContact()
     std::cout << "|-------------------------------------------|\n";
     while (i < 8)
     {
-        index = i + 48;
-        std::cout << "|" << add_spaces(index.size()) << changeWidth(index) ;
-        std::cout << "|" << add_spaces(cntct[i].getFirstName().size()) << changeWidth(cntct[i].getFirstName()) ;
-        std::cout << "|" << add_spaces(cntct[i].getlastName().size()) << changeWidth(cntct[i].getlastName()) ;
-        std::cout << "|" << add_spaces(cntct[i].getnickname().size()) << changeWidth(cntct[i].getnickname()) ;
-        std::cout << "|" << std::endl;
+        if (cntct[i].getFirstName().size())
+        {
+            index = i + 48;
+            std::cout << "|" << add_spaces(index.size()) << changeWidth(index) ;
+            std::cout << "|" << add_spaces(cntct[i].getFirstName().size()) << changeWidth(cntct[i].getFirstName()) ;
+            std::cout << "|" << add_spaces(cntct[i].getlastName().size()) << changeWidth(cntct[i].getlastName()) ;
+            std::cout << "|" << add_spaces(cntct[i].getnickname().size()) << changeWidth(cntct[i].getnickname()) ;
+            std::cout << "|" << std::endl;
+        }
         i++;
     }
-    std::cout << "|-------------------------------------------|\n";
+    std::cout << "-------------------------------------------\n";
 }
 
 
