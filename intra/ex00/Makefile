@@ -1,5 +1,5 @@
 C++		= c++
-C++_F	= -Wall -Wextra -Werror
+C++_F	= -Wall -Wextra -Werror -std=c++98
 SRC		= megaphone.cpp
 OBJ		= $(SRC:.cpp=.o)
 NAME	= megaphone
