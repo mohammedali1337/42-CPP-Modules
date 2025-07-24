@@ -34,6 +34,7 @@ void    PhoneBook::searchContact()
 {
     int i = 0;
     std::string index;
+    std::string input;
     if (contact_count == 0)
     {
         std::cout << "no contact saved !\n";
@@ -46,7 +47,7 @@ void    PhoneBook::searchContact()
     {
         if (cntct[i].getFirstName().size())
         {
-            index = i + 48;
+            index = i + 1 + 48;
             std::cout << "|" << add_spaces(index.size()) << changeWidth(index) ;
             std::cout << "|" << add_spaces(cntct[i].getFirstName().size()) << changeWidth(cntct[i].getFirstName()) ;
             std::cout << "|" << add_spaces(cntct[i].getlastName().size()) << changeWidth(cntct[i].getlastName()) ;
@@ -55,7 +56,21 @@ void    PhoneBook::searchContact()
         }
         i++;
     }
-    std::cout << "-------------------------------------------\n";
+    std::cout << " -------------------------------------------\n";
+    std::cout << "select an index: ";
+    if (!std::getline(std::cin, input))
+        return ;
+    if (input.size() == 1 && input[0] >= '1' && input[0] <= '8' && cntct[input[0] - 1 - '0'].getFirstName().size())
+    {
+        int idx = input[0] - '0' - 1;
+        std::cout << "First Name: " << cntct[idx].getFirstName() << std::endl;
+        std::cout << "Last Name: " << cntct[idx].getlastName() << std::endl;
+        std::cout << "Nickname: " << cntct[idx].getnickname() << std::endl;
+        std::cout << "Phone Number: " << cntct[idx].getphoneNumber() << std::endl;
+        std::cout << "Darkest Secret: " << cntct[idx].getdarkestSecret() << std::endl;
+    }
+    else
+        std::cout << "Invalid index!" << std::endl;
 }
 
 
