@@ -6,6 +6,7 @@ int main(void)
     PhoneBook ph;
     while (true)
     {
+        std::cout << "enter command: ";
         if (!std::getline(std::cin, input))
             return 1;
         if (input == "ADD")
