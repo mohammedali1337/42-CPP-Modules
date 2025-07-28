@@ -26,17 +26,20 @@ int main(void)
 {
     int num_of_car;
     string name;
+    cout << "num of car : ";
     cin >> num_of_car;
     Car **ob;
+    ob = NULL;
     for (int i = 0 ; i < num_of_car; i++)
     {
         cout << "car " << i << ": ";
         cin >> name;
         ob[i] = new Car(name);
     }
+
     for (int i = 0; i < num_of_car; i++)
         ob[i]->display_cat();
-        
+
     for (int i = 0; i < num_of_car; i++)
         delete ob[i];
 }
