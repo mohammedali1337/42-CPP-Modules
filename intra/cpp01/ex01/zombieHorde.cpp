@@ -3,8 +3,9 @@
 Zombie* zombieHorde( int N, std::string name )
 {
     Zombie *zobi ;
-    for (int i = 0; i < N; i++)
-    {
 
-    }
+    zobi = new Zombie[N];
+    for (int i = 0; i < N; i++)
+        zobi[i].set_name(name);
+    return (zobi);
 }
