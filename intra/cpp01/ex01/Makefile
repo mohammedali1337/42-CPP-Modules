@@ -1,7 +1,7 @@
 C++		= c++
 C++_F	= -Wall -Wextra -Werror -std=c++98
 SRC		=  main.cpp Zombie.cpp zombieHorde.cpp 
-OBJ_S	= $(SRC: .cpp=.o)
+OBJ_S	= $(SRC:.cpp=.o)
 NAME	= Moarbrainz
 
 all: $(NAME)
