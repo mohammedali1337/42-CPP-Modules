@@ -2,47 +2,51 @@
 #include <fstream>
 #include <string>
 
-std::string replace(std::string line, std::string old_s, std::string new_s)
+std::string replace_str(std::string line, const std::string &old_s, const std::string &new_s)
 {
-    size_t  pos;
+    size_t pos = 0;
 
     if (old_s.empty())
         return line;
+
     while ((pos = line.find(old_s, pos)) != std::string::npos)
     {
         line.erase(pos, old_s.length());
         line.insert(pos, new_s);
-        pos += new_s.length();
+        pos += new_s.length(); // نمشي للقدّام باش ما ندخلش فـ لوب لا نهائي
     }
     return line;
 }
 
 int main(int c, char **v)
 {
-    std::ifstream    infile;
-    std::ofstream   outfile;
-    std::string     out;
-    std::string     line;
-    std::string     replace_str;
-
     if (c != 4)
-        return 1;
-        
-    infile.open(v[1]);
-    out = out + v[1] + ".replace";
-    outfile.open(out);
-    if (!outfile.is_open() || !infile.is_open())
     {
-        std::cout << "cant open file \n";
-        infile.close();
-        outfile.close();
+        std::cerr << "Usage: " << v[0] << " <filename> <old_string> <new_string>\n";
         return 1;
     }
+
+    std::ifstream infile(v[1]);
+    if (!infile.is_open())
+    {
+        std::cerr << "Error: cannot open input file\n";
+        return 1;
+    }
+
+    std::string out_filename = std::string(v[1]) + ".replace";
+    std::ofstream outfile(out_filename);
+    if (!outfile.is_open())
+    {
+        std::cerr << "Error: cannot open output file\n";
+        return 1;
+    }
+
+    std::string line;
     while (std::getline(infile, line))
     {
-        replace_str = replace(line, v[2], v[3]);
-        std::cout << replace_str << std::endl;
-        outfile << replace_str << std::endl;
+        std::string new_line = replace_str(line, v[2], v[3]);
+        outfile << new_line << "\n";
     }
+
     return 0;
 }

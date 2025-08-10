@@ -1,13 +1,22 @@
+C_F		= -Wall -Wextra -Werror -std=c++98
 C++		= c++
-C++_F	= -Wall -Wextra -Werror -std=c++98
 SRC		= main.cpp
-OB		= $(SRC:.cpp=.o)
+OBJ		= $(SRC:.cpp=.o)
 NAME	= Sed_is_for_losers
+
 
 all: $(NAME)
 
-$(NAME):
-		$(C++) $(C_F) $(OBJ) -o $(NAME)
+$(NAME): $(OBJ)
+	$(C++) $(C_F) $(OBJ) -o $(NAME)
 
-	%.o: %.cpp
+%.o: %.cpp
 	$(C++) $(C_F) -c $< -o $@
+
+clean: 
+	rm -f $(OBJ)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: clean all
