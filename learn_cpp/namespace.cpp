@@ -16,11 +16,13 @@ namespace simo
     }
 } ;
 
-// using namespace simo ;    when im using simo namespace should printer hello simo 
+using namespace simo ;    //when im using simo namespace should printer hello simo 
 using namespace ali ;       //when im using simo namespace should printer hello ali 
-
+int in = 10;
 int main(void)
 {
-    print_a();
+    int in = 20;
+    simo::print_a();
+    std::cout << in << std::endl;
     return 0;
 }

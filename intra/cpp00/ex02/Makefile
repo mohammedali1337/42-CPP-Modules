@@ -1,4 +1,4 @@
-NAME = test
+NAME = Account
 SRC = Account.cpp tests.cpp
 OBJ = $(SRC:.cpp=.o)
 CXX = c++
