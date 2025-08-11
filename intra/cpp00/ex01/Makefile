@@ -4,7 +4,6 @@ SRC		= Contact.cpp main.cpp PhoneBook.cpp
 OBJ		= $(SRC:.cpp=.o)
 NAME	= contact
 
-
 all: $(NAME)
 
 $(NAME): $(OBJ)
