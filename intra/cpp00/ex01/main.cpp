@@ -10,9 +10,15 @@ int main(void)
         if (!std::getline(std::cin, input))
             return 1;
         if (input == "ADD")
-            ph.addContact();
+        {
+            if (ph.addContact())
+                return 2;
+        }
         else if (input == "SEARCH")
-            ph.searchContact();
+        {
+            if (ph.searchContact())
+               return 3;
+        }
         else if (input == "EXIT")
             break;
     }

@@ -6,7 +6,7 @@
 /*   By: mgarouj <mgarouj@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 15:11:36 by mgarouj           #+#    #+#             */
-/*   Updated: 2025/08/11 15:11:37 by mgarouj          ###   ########.fr       */
+/*   Updated: 2025/08/11 18:35:11 by mgarouj          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class PhoneBook
         int     index;
     public:
         PhoneBook();
-        void    searchContact();
-        void    addContact();
+        int    searchContact();
+        int    addContact();
 };
 
 #endif

@@ -30,7 +30,15 @@ std::string changeWidth(std::string str)
 	return (str);
 }
 
-void    PhoneBook::searchContact()
+bool isPrintableString(const std::string& str) {
+    for (size_t i = 0; i < str.size(); ++i) {
+        if (str[i] == 32 || (str[i] >= 9 && str[i] <= 13) )
+            return false;
+    }
+    return true;
+}
+
+int    PhoneBook::searchContact()
 {
     int i = 0;
     std::string index;
@@ -38,7 +46,7 @@ void    PhoneBook::searchContact()
     if (contact_count == 0)
     {
         std::cout << "no contact saved !\n";
-        return ;
+        return 0;
     }
     std::cout << "|-------------------------------------------|\n";
     std::cout << "|     Index|First Name| Last Name| Nickname |\n";
@@ -57,9 +65,14 @@ void    PhoneBook::searchContact()
         i++;
     }
     std::cout << " -------------------------------------------\n";
-    std::cout << "select an index: ";
-    if (!std::getline(std::cin, input))
-        return ;
+    while (true)
+    {
+        std::cout << "select an index: ";
+        if (!std::getline(std::cin, input))
+            return 1;
+        if (!input.empty() && isPrintableString(input))
+        break;
+    }
     if (input.size() == 1 && input[0] >= '1' && input[0] <= '8' && cntct[input[0] - 1 - '0'].getFirstName().size())
     {
         int idx = input[0] - '0' - 1;
@@ -71,41 +84,73 @@ void    PhoneBook::searchContact()
     }
     else
         std::cout << "Invalid index!" << std::endl;
+    return 0;
 }
 
-void    PhoneBook::addContact()
+int    PhoneBook::addContact()
 {
     std::string str;
 
     if (index > 7)
         std::cout << "Warning: overwriting info about " << cntct[index % 8].getFirstName() << std::endl;
-    std::cout << "Enter first name: ";
-    if (!std::getline(std::cin, str))
-            return ;
+    while (true)
+    {
+        std::cout << "Enter first name: ";
+        if (!std::getline(std::cin, str))
+            return 1;
+        if (!str.empty() && isPrintableString(str))
+            break;
+        std::cout << "Invalid input! Only printable characters allowed.\n";
+    }
     cntct[index % 8].setFirstName(str);
 
-    std::cout << "Enter last name: ";
-    if (!std::getline(std::cin, str))
-            return ;
+    while (true)
+    {
+        std::cout << "Enter last name: ";
+        if (!std::getline(std::cin, str))
+            return 1;
+        if (!str.empty() && isPrintableString(str))
+            break;
+        std::cout << "Invalid input! Only printable characters allowed.\n";
+    }
     cntct[index % 8].setlastName(str);
 
-    std::cout << "Enter nickname: ";
-    if (!std::getline(std::cin, str))
-            return ;
+    while (true)
+    {
+        std::cout << "Enter nickname: ";
+        if (!std::getline(std::cin, str))
+            return 1;
+        if (!str.empty() && isPrintableString(str))
+            break;
+        std::cout << "Invalid input! Only printable characters allowed.\n";
+    }
     cntct[index % 8].setnickname(str);
 
-    std::cout << "Enter phone number: ";
-    if (!std::getline(std::cin, str))
-            return ;
+     while (true)
+    {
+        std::cout << "Enter phone number: ";
+        if (!std::getline(std::cin, str))
+            return 1;
+        if (!str.empty() && isPrintableString(str))
+            break;
+        std::cout << "Invalid input! Only printable characters allowed.\n";
+    }
     cntct[index % 8].setphoneNumber(str);
 
-    std::cout << "Enter darkest secret: ";
-    if (!std::getline(std::cin, str))
-            return ;
+     while (true)
+    {
+        std::cout << "Enter darkest secret: ";
+        if (!std::getline(std::cin, str))
+            return 1;
+        if (!str.empty() && isPrintableString(str))
+            break;
+        std::cout << "Invalid input! Only printable characters allowed.\n";
+    }
     cntct[index % 8].setdarkestSecret(str);
 
     std::cout << "Contact added successfully!" << std::endl;
     index++; 
     if (contact_count < 8)
         contact_count++;
+    return 0;
 }
