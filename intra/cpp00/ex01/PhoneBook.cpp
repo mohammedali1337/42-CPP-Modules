@@ -6,7 +6,7 @@ PhoneBook::PhoneBook()
     contact_count = 0;
 }
 
-std::string	add_spaces(int n)
+std::string	AddSpaces(int n)
 {
 	std::string	str;
 
@@ -56,10 +56,10 @@ int    PhoneBook::searchContact()
         if (cntct[i].getFirstName().size())
         {
             index = i + 1 + 48;
-            std::cout << "|" << add_spaces(index.size()) << changeWidth(index) ;
-            std::cout << "|" << add_spaces(cntct[i].getFirstName().size()) << changeWidth(cntct[i].getFirstName()) ;
-            std::cout << "|" << add_spaces(cntct[i].getlastName().size()) << changeWidth(cntct[i].getlastName()) ;
-            std::cout << "|" << add_spaces(cntct[i].getnickname().size()) << changeWidth(cntct[i].getnickname()) ;
+            std::cout << "|" << AddSpaces(index.size()) << changeWidth(index) ;
+            std::cout << "|" << AddSpaces(cntct[i].getFirstName().size()) << changeWidth(cntct[i].getFirstName()) ;
+            std::cout << "|" << AddSpaces(cntct[i].getlastName().size()) << changeWidth(cntct[i].getlastName()) ;
+            std::cout << "|" << AddSpaces(cntct[i].getnickname().size()) << changeWidth(cntct[i].getnickname()) ;
             std::cout << "|" << std::endl;
         }
         i++;
@@ -87,65 +87,44 @@ int    PhoneBook::searchContact()
     return 0;
 }
 
-int    PhoneBook::addContact()
+int    MyGet(std::string msj, std::string &str)
+{
+    while (true)
+    {
+        std::cout << msj;
+        if (!std::getline(std::cin, str))
+            return 1;
+        if (!str.empty() && isPrintableString(str))
+            break;
+        std::cout << "Invalid input! \n";
+    }
+    return 0;
+}
+int PhoneBook::addContact()
 {
     std::string str;
 
     if (index > 7)
         std::cout << "Warning: overwriting info about " << cntct[index % 8].getFirstName() << std::endl;
-    while (true)
-    {
-        std::cout << "Enter first name: ";
-        if (!std::getline(std::cin, str))
-            return 1;
-        if (!str.empty() && isPrintableString(str))
-            break;
-        std::cout << "Invalid input! Only printable characters allowed.\n";
-    }
+
+    if (MyGet("Enter first name: ", str))
+        return 1;
     cntct[index % 8].setFirstName(str);
 
-    while (true)
-    {
-        std::cout << "Enter last name: ";
-        if (!std::getline(std::cin, str))
-            return 1;
-        if (!str.empty() && isPrintableString(str))
-            break;
-        std::cout << "Invalid input! Only printable characters allowed.\n";
-    }
+    if (MyGet("Enter last name: ", str))
+        return 1;
     cntct[index % 8].setlastName(str);
 
-    while (true)
-    {
-        std::cout << "Enter nickname: ";
-        if (!std::getline(std::cin, str))
-            return 1;
-        if (!str.empty() && isPrintableString(str))
-            break;
-        std::cout << "Invalid input! Only printable characters allowed.\n";
-    }
+    if (MyGet("Enter nickname: ", str))
+        return 1;
     cntct[index % 8].setnickname(str);
 
-     while (true)
-    {
-        std::cout << "Enter phone number: ";
-        if (!std::getline(std::cin, str))
-            return 1;
-        if (!str.empty() && isPrintableString(str))
-            break;
-        std::cout << "Invalid input! Only printable characters allowed.\n";
-    }
+    if (MyGet("Enter phone number: ", str))
+        return 1;
     cntct[index % 8].setphoneNumber(str);
 
-     while (true)
-    {
-        std::cout << "Enter darkest secret: ";
-        if (!std::getline(std::cin, str))
-            return 1;
-        if (!str.empty() && isPrintableString(str))
-            break;
-        std::cout << "Invalid input! Only printable characters allowed.\n";
-    }
+    if (MyGet("Enter darkest secret: ", str))
+        return 1;
     cntct[index % 8].setdarkestSecret(str);
 
     std::cout << "Contact added successfully!" << std::endl;
