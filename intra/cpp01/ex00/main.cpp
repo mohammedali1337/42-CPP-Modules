@@ -9,5 +9,4 @@ int main(void)
     randomChump("random zombie");
     delete zombieob;
     return 0;
-
 }
