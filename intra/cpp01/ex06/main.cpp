@@ -9,16 +9,35 @@ int main(int c, char **v)
         std::string levl;
         std::string levls[] = { "DEBUG", "INFO", "WARNING", "ERROR" };
         void (Harl::*func[])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+
         levl = v[1];
-        for (i = 0; i < 4 ; i++)
+        i = -1;
+        for (int j = 0; j < 4; j++)
         {
-            if (levl == levls[i])
+            if (levl == levls[j])
+            {
+                i = j;
+                break;
+            }
+        }
+        switch (i)
+        {
+            case 0:
+                (obj.*func[0])();
+                break;
+            case 1:
+                (obj.*func[1])();
+                break;
+            case 2:
+                (obj.*func[2])();
+                break;
+            case 3:
+                (obj.*func[3])();
+                break;
+            default:
+                std::cout << "[ Probably complaining about insignificant problems ]\n";
                 break;
         }
-        if (i >= 0 && i <= 3)
-            (obj.*func[i])();
-        else 
-            std::cout << "[ Probably complaining about insignificant problems ]\n";
     }
     else
     {

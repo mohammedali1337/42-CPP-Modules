@@ -32,7 +32,7 @@ std::string changeWidth(std::string str)
 
 bool isPrintableString(const std::string& str) {
     for (size_t i = 0; i < str.size(); ++i) {
-        if (str[i] == 32 || (str[i] >= 9 && str[i] <= 13) )
+        if (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
             return false;
     }
     return true;
