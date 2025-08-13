@@ -219,45 +219,45 @@
 // overloading +
 
 
-#include <iostream>
-#include <cmath>
+// #include <iostream>
+// #include <cmath>
 
-using namespace std;
+// using namespace std;
 
-// الذي يمثل النقطة Point هنا قمنا بتعريف الكلاس
-class Point {
+// // الذي يمثل النقطة Point هنا قمنا بتعريف الكلاس
+// class Point {
 
-    public:
-        // هنا قمنا بتعريف خصائص الكلاس
-        int x;
-        int y;
+//     public:
+//         // هنا قمنا بتعريف خصائص الكلاس
+//         int x;
+//         int y;
 
-        // هنا قمنا بتعريف كونستركتور الكلاس بهدف إعطاء قيم أولية لخصائص الكائن الذي يتم إنشاؤه من الكلاس
-        Point(int x, int y)
-        {
-            this->x = x;
-            this->y = y;
-        }
+//         // هنا قمنا بتعريف كونستركتور الكلاس بهدف إعطاء قيم أولية لخصائص الكائن الذي يتم إنشاؤه من الكلاس
+//         Point(int x, int y)
+//         {
+//             this->x = x;
+//             this->y = y;
+//         }
 
-        // و الحصول على المسافة بينهما Point على كائن من الكلاس Point للرمز + حتى نستطيع إضافة كائن من الكلاس overload هنا فعلنا
-        double operator+ (Point point)
-        {
-            return sqrt(pow(point.x - this->x, 2) + pow(point.y - this->y, 2));
-        }
-};
+//         // و الحصول على المسافة بينهما Point على كائن من الكلاس Point للرمز + حتى نستطيع إضافة كائن من الكلاس overload هنا فعلنا
+//         double operator+ (Point point)
+//         {
+//             return sqrt(pow(point.x - this->x, 2) + pow(point.y - this->y, 2));
+//         }
+// };
 
-// main() هنا قمنا بتعريف الدالة
-int main()
-{
-    // أي نقطتين ,Point هنا قمنا بإنشاء كائنين من الكلاس
-    Point p1(1, 5);
-    Point p2(4, 8);
+// // main() هنا قمنا بتعريف الدالة
+// int main()
+// {
+//     // أي نقطتين ,Point هنا قمنا بإنشاء كائنين من الكلاس
+//     Point p1(1, 5);
+//     Point p2(4, 8);
 
-    // distance و من ثم قمنا بتخزين الناتج في المتغير p2 و النقطة p1 هنا قمنا باستخدام العامل + للحصول على المسافة الموجودة بين النقطة
-    double distance = p1 + p2;
+//     // distance و من ثم قمنا بتخزين الناتج في المتغير p2 و النقطة p1 هنا قمنا باستخدام العامل + للحصول على المسافة الموجودة بين النقطة
+//     double distance = p1 + p2;
 
-    // distance هنا قمنا بعرض المسافة بين النقطتين و التي قمنا بتخزينها في المتغير
-    cout << "Distance between p1 and p2 = " << distance;
+//     // distance هنا قمنا بعرض المسافة بين النقطتين و التي قمنا بتخزينها في المتغير
+//     cout << "Distance between p1 and p2 = " << distance;
 
-    return 0;
-}
+//     return 0;
+// }
