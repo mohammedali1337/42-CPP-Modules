@@ -12,7 +12,17 @@ class Rectangle
         void    SetHight(float hight);
         float   Getwidht();
         void    Setwidth(float hight);
+
+
+        // Prefix increment ++var
+        Rectangle operator ++();
+
+
+        // Postfix increment var++
         Rectangle operator ++(int);
+
+
+        Rectangle operator +(Rectangle r);
 
 
         Rectangle();
@@ -23,7 +33,7 @@ class Rectangle
 
 
 
-
+// Postfix increment var++
 Rectangle Rectangle::operator++(int)
 {
     width++;
@@ -33,7 +43,23 @@ Rectangle Rectangle::operator++(int)
 }
 
 
+//perfix increment ++var
+Rectangle Rectangle::operator++()
+{
+    width++;
+    hight++;
+    Rectangle nob(width, hight);
+    return nob;
+}
 
+
+Rectangle Rectangle::operator+(Rectangle r)
+{
+    Rectangle newr;
+    newr.Setwidth(width + r.Getwidht());
+    newr.SetHight(hight + r.GetHight());
+    return newr;
+}
 
 
 
@@ -74,6 +100,13 @@ int main(void)
 
     Rectangle ob3 = ob1++;
     cout << ob3.Getwidht() << endl << ob3.GetHight();
+
+    ob3 = ++ob2;
+    cout <<endl<< ob3.Getwidht() << endl << ob3.GetHight();
+
+
+    Rectangle ob4 = ob1 + ob2;
+    cout << "width for ob4 = " << ob4.Getwidht() << endl << "hight for ob4 = " << ob4.GetHight() << endl;
 
 
     return 0;
