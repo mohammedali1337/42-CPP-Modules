@@ -12,10 +12,44 @@ class Rectangle
         void    SetHight(float hight);
         float   Getwidht();
         void    Setwidth(float hight);
-        Rectangle   add(Rectangle ob);
+        Rectangle operator ++(int);
+
+
+        Rectangle();
+        Rectangle(float w, float h);
+        ~Rectangle();
 };
 
-Rectangle
+
+
+
+
+Rectangle Rectangle::operator++(int)
+{
+    width++;
+    hight++;
+    Rectangle newob(width, hight);
+    return newob;
+}
+
+
+
+
+
+
+
+Rectangle::Rectangle()
+{
+
+}
+
+Rectangle::Rectangle(float w, float h)
+{
+    this->width = w;
+    this->hight = h;
+}
+
+Rectangle::~Rectangle(){}
 
 float   Rectangle::GetHight()
 {
@@ -36,8 +70,11 @@ void    Rectangle::Setwidth(float width)
 
 int main(void)
 {
-    string s1 = "mohammed";
-    string s2 = "ali";
-    cout << s1[0] + s2[0] << endl;
+    Rectangle ob1(5, 6), ob2(4, 5);
 
+    Rectangle ob3 = ob1++;
+    cout << ob3.Getwidht() << endl << ob3.GetHight();
+
+
+    return 0;
 }
