@@ -2,7 +2,7 @@ C_F		= -Wall -Wextra -Werror -std=c++98
 C++		= c++
 SRC		= main.cpp Harl.cpp
 OBJ		= $(SRC:.cpp=.o)
-NAME	= Sed_is_for_losers
+NAME	=  Harl_2.0
 
 
 all: $(NAME)
