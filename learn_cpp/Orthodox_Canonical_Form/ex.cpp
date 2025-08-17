@@ -2,9 +2,14 @@
 
 int main()
 {
-    MyString a;
-    MyString b(a);
+    // MyString a;
+    // MyString b(a);
     MyString c;
 
-    c.operator=(b);
+    // c.operator=(b);
+    float a = 3.5f;
+
+    float d = a * 256;
+
+    std::cout << d;
 }

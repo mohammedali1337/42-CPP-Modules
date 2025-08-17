@@ -13,7 +13,7 @@ std::string replace_str(std::string line, const std::string &old_s, const std::s
     {
         line.erase(pos, old_s.length());
         line.insert(pos, new_s);
-        pos += new_s.length(); // نمشي للقدّام باش ما ندخلش فـ لوب لا نهائي
+        pos += new_s.length();
     }
     return line;
 }
