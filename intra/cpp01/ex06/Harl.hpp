@@ -9,6 +9,7 @@ class Harl
         void info();
         void warning();
         void error();
+        void complain(char **levl, int c);
 };
 
 
