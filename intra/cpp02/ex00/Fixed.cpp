@@ -27,3 +27,12 @@ void Fixed::setRawBits( int const raw)
     std::cout << "getRawBits member function called" << std::endl;
 }
 
+Fixed Fixed::operator=(const Fixed &ob)
+{
+    std::cout << "Copy assignment operator called" << std::endl;
+    if (this != &ob)
+    {
+        fpn = ob.fpn;
+    }
+    return *this;
+}
