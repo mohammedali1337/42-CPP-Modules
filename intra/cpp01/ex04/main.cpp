@@ -47,6 +47,7 @@ int main(int c, char **v)
         std::string new_line = replace_str(line, v[2], v[3]);
         outfile << new_line << "\n";
     }
-
+    infile.close();
+    outfile.close();
     return 0;
 }
