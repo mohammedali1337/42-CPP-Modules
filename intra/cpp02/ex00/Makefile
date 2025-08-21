@@ -9,7 +9,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CPP) $(CF) $(OBJ) -o $(NAME)
 
-%.o: %.c Fixed.hpp
+%.o: %.cpp Fixed.hpp
 	$(CPP) $(CF) -c $< -o $@
 
 clean: 
