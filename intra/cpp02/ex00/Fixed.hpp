@@ -7,7 +7,7 @@ class Fixed
 {
     private:
         int fpn;
-        static const int fractional;
+        static const int fractional = 8;
     public:
         Fixed();
         Fixed(const Fixed &cpy);
