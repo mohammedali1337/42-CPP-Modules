@@ -15,7 +15,7 @@ Fixed::Fixed(const int nb)
 Fixed::Fixed(const float nb)
 {
     std::cout << "Float constructor called" << std::endl;
-    this->fpn = (float)nb * 256;
+    this->fpn = roundf((float)nb * (1 << fractional));
 }
 
 Fixed::Fixed(const Fixed& ob)
@@ -34,29 +34,28 @@ Fixed& Fixed::operator=(const Fixed& ob)
     if (this != &ob)
         this->fpn = ob.fpn;
     std::cout << "Copy assignment operator called" << std::endl;
+    return *this;
 }
 
 float Fixed::toFloat( void ) const
 {
     float tofloat;
     
-    tofloat = fpn / 256;
+    tofloat = (float)fpn / (1 << fractional);
     return tofloat;
 }
 
 int Fixed::toInt( void ) const
 {
     int toint;
-    
-    toint = fpn / 256;
+    toint = (fpn / (1 << fractional));
     return toint;
 }
 
-float Fixed::operator<< (const Fixed& ob)
-{
-    return (ob.getRawBits());
+std::ostream& operator<<(std::ostream& os, const Fixed& ob) {
+    os << ob.toFloat();
+    return os;
 }
-
 
 
 //encapsulation 
