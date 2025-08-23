@@ -46,8 +46,8 @@ Rectangle Rectangle::operator++(int)
 //perfix increment ++var
 Rectangle Rectangle::operator++()
 {
-    width++;
-    hight++;
+    ++width;
+    ++hight;
     Rectangle nob(width, hight);
     return nob;
 }

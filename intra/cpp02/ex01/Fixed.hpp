@@ -21,7 +21,6 @@ class Fixed
         void setRawBits( int const raw );
         
 
-        // member fonction 
         float toFloat( void ) const;
         int   toInt( void ) const;
 };
