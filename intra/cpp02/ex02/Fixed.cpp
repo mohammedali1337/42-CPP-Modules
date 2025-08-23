@@ -56,18 +56,18 @@ Fixed Fixed::operator++ ()
 {
     float nb = this->toFloat();
     nb += 0.00390625;
-    Fixed newob(nb);
-
-    return newob;
+    
+    return nb;
 }
 
 Fixed Fixed::operator++ (int)
 {
     float nb = this->toFloat();
-    nb += 0.00390625;
-    Fixed newob(nb);
-    
-    return newob;
+    float newthis = nb;
+
+    newthis += 0.00390625;
+    this->fpn 
+    return nb;
 }
 
 

@@ -29,13 +29,6 @@ Fixed::~Fixed()
     std::cout << "Destructor called" << std::endl;
 }
 
-Fixed& Fixed::operator=(const Fixed& ob)
-{
-    if (this != &ob)
-        this->fpn = ob.fpn;
-    std::cout << "Copy assignment operator called" << std::endl;
-    return *this;
-}
 
 float Fixed::toFloat( void ) const
 {
@@ -52,10 +45,6 @@ int Fixed::toInt( void ) const
     return toint;
 }
 
-std::ostream& operator<<(std::ostream& os, const Fixed& ob) {
-    os << ob.toFloat();
-    return os;
-}
 
 
 //encapsulation 
@@ -69,4 +58,30 @@ void Fixed::setRawBits( int const raw)
 {
     std::cout << "setRawBits member function called" << std::endl;
     this->fpn = raw;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// operator overloadig 
+
+Fixed& Fixed::operator=(const Fixed& ob)
+{
+    if (this != &ob)
+        this->fpn = ob.fpn;
+    std::cout << "Copy assignment operator called" << std::endl;
+    return *this;
+}
+std::ostream& operator<<(std::ostream& os, const Fixed& ob) {
+    os << ob.toFloat();
+    return os;
 }
