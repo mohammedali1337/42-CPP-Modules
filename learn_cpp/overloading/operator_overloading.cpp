@@ -22,6 +22,7 @@ class Rectangle
         Rectangle operator ++(int);
 
 
+
         Rectangle operator +(Rectangle r);
 
 

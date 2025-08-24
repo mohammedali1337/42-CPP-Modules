@@ -2,7 +2,7 @@
 
 Fixed::Fixed()
 {
-    fpn = 0;
+    this->fpn = 0;
 }
 
 Fixed::Fixed(const int nb)
@@ -25,10 +25,11 @@ Fixed::~Fixed()
 
 }
 
+
 float Fixed::toFloat( void ) const
 {
     float tofloat;
-
+    
     tofloat = (float)fpn / (1 << fractional);
     return tofloat;
 }
@@ -42,6 +43,16 @@ int Fixed::toInt( void ) const
 
 
 
+//encapsulation 
+int Fixed::getRawBits( void ) const
+{
+    return (this->fpn);
+}
+
+void Fixed::setRawBits( int const raw)
+{
+    this->fpn = raw;
+}
 
 
 
@@ -51,35 +62,182 @@ int Fixed::toInt( void ) const
 
 
 
-// operator overloading
+
+
+
+
+// operator overloadig 
+
+Fixed& Fixed::operator=(const Fixed& ob)
+{
+    if (this != &ob)
+        this->fpn = ob.fpn;
+    return *this;
+}
+std::ostream& operator<<(std::ostream& os, const Fixed& ob) {
+    os << ob.toFloat();
+    return os;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// comparison operator 
+
+bool Fixed::operator < (const Fixed &ob2)
+{
+    if (this->fpn < ob2.fpn)
+        return 1;
+    return 0;
+}
+
+bool Fixed::operator > (const Fixed &ob2)
+{
+    if (this->fpn > ob2.fpn)
+        return 1;
+    return 0;
+}
+
+bool Fixed::operator <= (const Fixed &ob2)
+{
+    if (this->fpn <= ob2.fpn)
+        return 1;
+    return 0;
+}
+
+bool Fixed::operator >= (const Fixed &ob2)
+{
+    if (this->fpn >= ob2.fpn)
+        return 1;
+    return 0;
+}
+
+
+bool Fixed::operator == (const Fixed &ob2)
+{
+    if (this->fpn == ob2.fpn)
+        return 1;
+    return 0;
+}
+
+
+bool Fixed::operator != (const Fixed &ob2)
+{
+    if (this->fpn != ob2.fpn)
+        return 1;
+    return 0;
+}
+
+
+// arithmetic operator 
+
+Fixed Fixed::operator+ (const Fixed &ob2)
+{
+    Fixed newob;
+    newob.fpn = this->fpn + ob2.fpn;
+    return newob;
+}
+
+Fixed Fixed::operator- (const Fixed &ob2)
+{
+    Fixed newob;
+    newob.fpn = this->fpn - ob2.fpn;
+    return newob;
+}
+
+Fixed Fixed::operator* (const Fixed &ob2)
+{
+    Fixed newob;
+    newob.fpn = (this->fpn * ob2.fpn) / (1 << fractional);
+    return newob;
+}
+
+Fixed Fixed::operator/ (const Fixed &ob2)
+{
+    Fixed newob;
+    newob.fpn = (this->fpn / ob2.fpn) * (1 << fractional);
+    return newob;
+}
+
+
+
+
+// increment / decrement operator 
+
 Fixed Fixed::operator++ ()
 {
-    float nb = this->toFloat();
-    nb += 0.00390625;
-    
-    return nb;
+    Fixed tmp;
+    fpn+=1;
+    tmp.fpn = fpn;
+    return tmp ;
 }
 
 Fixed Fixed::operator++ (int)
 {
-    float nb = this->toFloat();
-    float newthis = nb;
-
-    newthis += 0.00390625;
-    this->fpn 
-    return nb;
+    Fixed tmp;
+    tmp.fpn = fpn;
+    fpn+=1;
+    return tmp ;
 }
 
-
-Fixed &Fixed::operator= (const Fixed& ob)
+// --operator 
+Fixed Fixed::operator-- ()
 {
-    if (this != &ob)
-        this->fpn = ob.fpn;
-
-    return *this;
+    Fixed tmp;
+    fpn-=1;
+    tmp.fpn = fpn;
+    return tmp ;
 }
 
-std::ostream& operator<<(std::ostream& os, const Fixed& ob) {
-    os << ob.toFloat();
-    return os;
+Fixed Fixed::operator-- (int)
+{
+    Fixed tmp;
+    tmp.fpn = fpn;
+    fpn-=1;
+    return tmp ;
+}
+
+
+
+
+// member function 
+
+Fixed& Fixed::min(Fixed &ob1, Fixed &ob2)
+{
+    if (ob1.fpn > ob2.fpn)
+        return ob2;
+    else 
+        return ob1;
+}
+
+Fixed& Fixed::max(Fixed &ob1, Fixed &ob2)
+{
+    if (ob1.fpn < ob2.fpn)
+        return ob2;
+    else 
+        return ob1;
+}
+
+const Fixed& Fixed::min(const Fixed &ob1, const Fixed &ob2)
+{
+    if (ob1.fpn > ob2.fpn)
+        return ob2;
+    else 
+        return ob1;
+}
+
+const Fixed& Fixed::max(const Fixed &ob1, const Fixed &ob2)
+{
+    if (ob1.fpn < ob2.fpn)
+        return ob2;
+    else 
+        return ob1;
 }
