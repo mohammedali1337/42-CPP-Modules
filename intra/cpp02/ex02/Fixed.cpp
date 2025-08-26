@@ -25,11 +25,10 @@ Fixed::~Fixed()
 
 }
 
-
 float Fixed::toFloat( void ) const
 {
     float tofloat;
-    
+
     tofloat = (float)fpn / (1 << fractional);
     return tofloat;
 }
@@ -41,8 +40,6 @@ int Fixed::toInt( void ) const
     return toint;
 }
 
-
-
 //encapsulation 
 int Fixed::getRawBits( void ) const
 {
@@ -53,18 +50,6 @@ void Fixed::setRawBits( int const raw)
 {
     this->fpn = raw;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 // operator overloadig 
 
@@ -78,17 +63,6 @@ std::ostream& operator<<(std::ostream& os, const Fixed& ob) {
     os << ob.toFloat();
     return os;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 // comparison operator 
 
@@ -167,9 +141,6 @@ Fixed Fixed::operator/ (const Fixed &ob2)
     return newob;
 }
 
-
-
-
 // increment / decrement operator 
 
 Fixed Fixed::operator++ ()
@@ -204,8 +175,6 @@ Fixed Fixed::operator-- (int)
     fpn-=1;
     return tmp ;
 }
-
-
 
 
 // member function 

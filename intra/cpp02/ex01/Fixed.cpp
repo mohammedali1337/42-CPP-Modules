@@ -2,26 +2,26 @@
 
 Fixed::Fixed()
 {
-    std::cout << "Default constructor called" << std::endl;
     this->fpn = 0;
+    std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const int nb)
 {
-    std::cout << "Int constructor called" << std::endl;
     this->fpn = nb * 256;
+    std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed(const float nb)
 {
-    std::cout << "Float constructor called" << std::endl;
     this->fpn = roundf((float)nb * (1 << fractional));
+    std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed& ob)
 {
-    std::cout << "Copy constructor called" << std::endl;
     this->fpn = ob.fpn;
+    std::cout << "Copy constructor called" << std::endl;
 }
 
 Fixed::~Fixed()
@@ -50,14 +50,14 @@ int Fixed::toInt( void ) const
 //encapsulation 
 int Fixed::getRawBits( void ) const
 {
-    std::cout << "getRawBits member function called" << std::endl;
     return (this->fpn);
+    std::cout << "getRawBits member function called" << std::endl;
 }
 
 void Fixed::setRawBits( int const raw)
 {
-    std::cout << "setRawBits member function called" << std::endl;
     this->fpn = raw;
+    std::cout << "setRawBits member function called" << std::endl;
 }
 
 
