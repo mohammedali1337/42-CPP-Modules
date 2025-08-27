@@ -2,7 +2,7 @@
 
 int main()
 {
-    ScavTrap scav("Guardian");
+    ScavTrap scav;
     scav.attack("enemy");
     scav.guardGate();
 

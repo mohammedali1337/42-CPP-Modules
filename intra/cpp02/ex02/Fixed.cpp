@@ -1,33 +1,19 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed()
-{
-    this->fpn = 0;
-}
+Fixed::Fixed(): fpn(0){}
 
-Fixed::Fixed(const int nb)
-{
-    this->fpn = nb * 256;
-}
 
-Fixed::Fixed(const float nb)
-{
-    this->fpn = roundf((float)nb * (1 << fractional));
-}
+Fixed::Fixed(const int nb): fpn(nb * 256){}
 
-Fixed::Fixed(const Fixed& ob)
-{
-    this->fpn = ob.fpn;
-}
+Fixed::Fixed(const float nb): fpn(roundf((float)nb * (1 << fractional))){}
 
-Fixed::~Fixed()
-{
+Fixed::Fixed(const Fixed& ob): fpn(ob.fpn){}
 
-}
+Fixed::~Fixed(){}
 
 float Fixed::toFloat( void ) const
 {
-    float tofloat;
+    float   tofloat;
 
     tofloat = (float)fpn / (1 << fractional);
     return tofloat;
@@ -36,11 +22,11 @@ float Fixed::toFloat( void ) const
 int Fixed::toInt( void ) const
 {
     int toint;
+
     toint = (fpn / (1 << fractional));
     return toint;
 }
 
-//encapsulation 
 int Fixed::getRawBits( void ) const
 {
     return (this->fpn);
@@ -51,20 +37,18 @@ void Fixed::setRawBits( int const raw)
     this->fpn = raw;
 }
 
-// operator overloadig 
-
 Fixed& Fixed::operator=(const Fixed& ob)
 {
     if (this != &ob)
         this->fpn = ob.fpn;
     return *this;
 }
-std::ostream& operator<<(std::ostream& os, const Fixed& ob) {
+
+std::ostream& operator<<(std::ostream& os, const Fixed& ob)
+{
     os << ob.toFloat();
     return os;
 }
-
-// comparison operator 
 
 bool Fixed::operator < (const Fixed &ob2)
 {
@@ -110,9 +94,6 @@ bool Fixed::operator != (const Fixed &ob2)
     return 0;
 }
 
-
-// arithmetic operator 
-
 Fixed Fixed::operator+ (const Fixed &ob2)
 {
     Fixed newob;
@@ -141,8 +122,6 @@ Fixed Fixed::operator/ (const Fixed &ob2)
     return newob;
 }
 
-// increment / decrement operator 
-
 Fixed Fixed::operator++ ()
 {
     Fixed tmp;
@@ -159,7 +138,6 @@ Fixed Fixed::operator++ (int)
     return tmp ;
 }
 
-// --operator 
 Fixed Fixed::operator-- ()
 {
     Fixed tmp;
@@ -175,9 +153,6 @@ Fixed Fixed::operator-- (int)
     fpn-=1;
     return tmp ;
 }
-
-
-// member function 
 
 Fixed& Fixed::min(Fixed &ob1, Fixed &ob2)
 {
