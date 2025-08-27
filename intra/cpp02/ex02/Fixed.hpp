@@ -25,21 +25,21 @@ class Fixed
 
         // compareson operator 
 
-        bool operator < (const Fixed &ob2);
-        bool operator > (const Fixed &ob2);
-        bool operator <= (const Fixed &ob2);
-        bool operator >= (const Fixed &ob2);
+        bool operator < (const Fixed &ob2) const;
+        bool operator > (const Fixed &ob2) const;
+        bool operator <= (const Fixed &ob2) const;
+        bool operator >= (const Fixed &ob2) const;
 
-        bool operator == (const Fixed &ob2);
-        bool operator != (const Fixed &ob2);
+        bool operator == (const Fixed &ob2) const;
+        bool operator != (const Fixed &ob2) const;
 
 
         // arithmetic operator 
 
-        Fixed operator+ (const Fixed &ob2);
-        Fixed operator- (const Fixed &ob2);
-        Fixed operator* (const Fixed &ob2);
-        Fixed operator/ (const Fixed &ob2);
+        Fixed operator+ (const Fixed &ob2) const;
+        Fixed operator- (const Fixed &ob2) const;
+        Fixed operator* (const Fixed &ob2) const;
+        Fixed operator/ (const Fixed &ob2) const;
 
         //increment and decrement operator
 

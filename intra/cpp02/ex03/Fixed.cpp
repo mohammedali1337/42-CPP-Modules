@@ -5,7 +5,7 @@ Fixed::Fixed(): fpn(0){}
 
 Fixed::Fixed(const int nb): fpn(nb * 256){}
 
-Fixed::Fixed(const float nb): fpn(roundf((float)nb * (1 << fractional))){}
+Fixed::Fixed(const float nb): fpn(roundf(static_cast<float>(nb) * (1 << fractional))){}
 
 Fixed::Fixed(const Fixed& ob): fpn(ob.fpn){}
 
@@ -15,7 +15,7 @@ float Fixed::toFloat( void ) const
 {
     float   tofloat;
 
-    tofloat = (float)fpn / (1 << fractional);
+    tofloat = static_cast<float>(fpn) / (1 << fractional);
     return tofloat;
 }
 

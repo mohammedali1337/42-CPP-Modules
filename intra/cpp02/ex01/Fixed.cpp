@@ -10,7 +10,7 @@ Fixed::Fixed(const int nb): fpn(nb * 256)
 	std::cout << "Int constructor called" << std::endl;
 }
 
-Fixed::Fixed(const float nb): fpn(roundf((float)nb * (1 << fractional)))
+Fixed::Fixed(const float nb): fpn(roundf(static_cast<float>(nb) * (1 << fractional)))
 {
 	std::cout << "Float constructor called" << std::endl;
 }
@@ -29,7 +29,7 @@ float	Fixed::toFloat( void ) const
 {
 	float	tofloat;
 
-	tofloat = (float)fpn / (1 << fractional);
+	tofloat = static_cast<float>(fpn) / (1 << fractional);
 	return tofloat;
 }
 

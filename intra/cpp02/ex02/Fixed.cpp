@@ -5,7 +5,7 @@ Fixed::Fixed(): fpn(0){}
 
 Fixed::Fixed(const int nb): fpn(nb * 256){}
 
-Fixed::Fixed(const float nb): fpn(roundf((float)nb * (1 << fractional))){}
+Fixed::Fixed(const float nb): fpn(roundf(static_cast<float>(nb) * (1 << fractional))){}
 
 Fixed::Fixed(const Fixed& ob): fpn(ob.fpn){}
 
@@ -15,7 +15,7 @@ float Fixed::toFloat( void ) const
 {
     float   tofloat;
 
-    tofloat = (float)fpn / (1 << fractional);
+    tofloat = static_cast<float>(fpn) / (1 << fractional);
     return tofloat;
 }
 
@@ -50,28 +50,28 @@ std::ostream& operator<<(std::ostream& os, const Fixed& ob)
     return os;
 }
 
-bool Fixed::operator < (const Fixed &ob2)
+bool Fixed::operator < (const Fixed &ob2) const
 {
     if (this->fpn < ob2.fpn)
         return 1;
     return 0;
 }
 
-bool Fixed::operator > (const Fixed &ob2)
+bool Fixed::operator > (const Fixed &ob2) const
 {
     if (this->fpn > ob2.fpn)
         return 1;
     return 0;
 }
 
-bool Fixed::operator <= (const Fixed &ob2)
+bool Fixed::operator <= (const Fixed &ob2) const
 {
     if (this->fpn <= ob2.fpn)
         return 1;
     return 0;
 }
 
-bool Fixed::operator >= (const Fixed &ob2)
+bool Fixed::operator >= (const Fixed &ob2) const
 {
     if (this->fpn >= ob2.fpn)
         return 1;
@@ -79,7 +79,7 @@ bool Fixed::operator >= (const Fixed &ob2)
 }
 
 
-bool Fixed::operator == (const Fixed &ob2)
+bool Fixed::operator == (const Fixed &ob2) const
 {
     if (this->fpn == ob2.fpn)
         return 1;
@@ -87,35 +87,35 @@ bool Fixed::operator == (const Fixed &ob2)
 }
 
 
-bool Fixed::operator != (const Fixed &ob2)
+bool Fixed::operator != (const Fixed &ob2) const
 {
     if (this->fpn != ob2.fpn)
         return 1;
     return 0;
 }
 
-Fixed Fixed::operator+ (const Fixed &ob2)
+Fixed Fixed::operator+ (const Fixed &ob2) const
 {
     Fixed newob;
     newob.fpn = this->fpn + ob2.fpn;
     return newob;
 }
 
-Fixed Fixed::operator- (const Fixed &ob2)
+Fixed Fixed::operator- (const Fixed &ob2) const
 {
     Fixed newob;
     newob.fpn = this->fpn - ob2.fpn;
     return newob;
 }
 
-Fixed Fixed::operator* (const Fixed &ob2)
+Fixed Fixed::operator* (const Fixed &ob2) const
 {
     Fixed newob;
     newob.fpn = (this->fpn * ob2.fpn) / (1 << fractional);
     return newob;
 }
 
-Fixed Fixed::operator/ (const Fixed &ob2)
+Fixed Fixed::operator/ (const Fixed &ob2) const
 {
     Fixed newob;
     newob.fpn = (this->fpn / ob2.fpn) * (1 << fractional);

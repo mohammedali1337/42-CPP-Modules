@@ -6,8 +6,8 @@ int main(void )
     Point b(10, 0);
     Point c(0, 10);
 
-    Point p1(2, 2);
-    Point p2(20, 10);
+    Point p1(0.5, 9.4);
+    Point p2(0, 5);
     Point p3(2, 10);
     Point p4(2000, -1000);
 
