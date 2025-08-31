@@ -2,7 +2,7 @@ C++		= c++
 C_F		= -Wall -Wextra -Werror -std=c++98
 SRC		= main.cpp ClapTrap.cpp ScavTrap.cpp
 OBJ		= $(SRC:.cpp=.o)
-NAME	= ex00
+NAME	= ex01
 
 all: $(NAME) 
 

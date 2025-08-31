@@ -1,10 +1,9 @@
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main()
 {
-    ScavTrap scav;
-    scav.attack("enemy");
-    scav.guardGate();
+    FragTrap frag;
+    
 
     return 0;
 }
