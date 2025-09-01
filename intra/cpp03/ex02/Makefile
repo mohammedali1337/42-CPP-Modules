@@ -1,15 +1,15 @@
 C++		= c++ 
 C_F		= -Wall -Wextra -Werror -std=c++98
-SRC		= main.cpp ClapTrap.cpp ScavTrap.cpp
+SRC		= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 OBJ		= $(SRC:.cpp=.o)
-NAME	= ex00
+NAME	= ex02
 
 all: $(NAME) 
 
 $(NAME): $(OBJ)
 	$(C++) $(C_F) $(OBJ) -o $(NAME)
 
-%.o: %.cpp ClapTrap.hpp ScavTrap.hpp
+%.o: %.cpp ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
 	$(C++) $(C_F) -c $< -o $@
 	
 clean:
