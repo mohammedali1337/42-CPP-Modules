@@ -1,6 +1,7 @@
 #include "DiamondTrap.hpp"
 
-int main() {
+int main()
+{
     DiamondTrap dt("Hamza");
 
     dt.attack("target1");
