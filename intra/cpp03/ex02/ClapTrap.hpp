@@ -10,6 +10,7 @@ class ClapTrap
         int EnergyPoint;
         int Attack_damage;
     public:
+        ClapTrap();
         ClapTrap(std::string na);
         ClapTrap(const ClapTrap& ob);
         ~ClapTrap();
