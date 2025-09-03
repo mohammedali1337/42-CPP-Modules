@@ -1,6 +1,6 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(): ClapTrap("default_clap_name"), ScavTrap(), FragTrap(), name("default")
+DiamondTrap::DiamondTrap(): ClapTrap("default_clap_name"),  ScavTrap(), FragTrap(), name("default")
 {
     HitPoints = FragTrap::HitPoints;
     EnergyPoint = ScavTrap::EnergyPoint;
@@ -8,7 +8,7 @@ DiamondTrap::DiamondTrap(): ClapTrap("default_clap_name"), ScavTrap(), FragTrap(
     std::cout << "DiamondTrap default constructor called" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string na) : ClapTrap(na + "_clap_name"), ScavTrap(na), FragTrap(na), name(na)
+DiamondTrap::DiamondTrap(std::string na) : ClapTrap(na + "_clap_name"), FragTrap(na), ScavTrap(na), name(na)
 {
     HitPoints = FragTrap::HitPoints;
     EnergyPoint = ScavTrap::EnergyPoint;

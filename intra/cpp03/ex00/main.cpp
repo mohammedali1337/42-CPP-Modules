@@ -3,10 +3,14 @@
 int main(void)
 {
     ClapTrap ob("bo3bo3");
-    ob.beRepaired(22);
+
+    ob.attack("ssss");
+    ob.takeDamage(5);
+    ob.beRepaired(10);
     ob.takeDamage(5);
     ob.takeDamage(5);
     ob.takeDamage(5);
-    ob.attack("simo");
-    ob.attack("simo");
+    ob.takeDamage(5);
+
+    return 0;
 }
