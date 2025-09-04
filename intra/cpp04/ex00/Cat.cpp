@@ -1,0 +1,32 @@
+#include "Cat.hpp"
+
+Cat::Cat(): Animal()
+{
+    std::cout << "default constructor for Cat called" << std::endl;
+}
+
+Cat::Cat(std::string na): Animal(na)
+{
+    std::cout << "initialezed constructor for Cat is called " << std::endl;
+}
+
+Cat::Cat(const Cat& ob)
+{
+    type = ob.type;
+    std::cout << "cpy constructor for Cat is called " << std::endl;
+}
+
+Cat::~Cat()
+{
+    std::cout << "destructor for Cat called " << std::endl;
+}
+
+Cat& Cat::operator= (const Cat& ob)
+{
+    if (this != &ob)
+    {
+        type = ob.type;
+    }
+    std::cout << "cpy assignment operator for Cat called " << std::endl;
+    return *this;
+}
