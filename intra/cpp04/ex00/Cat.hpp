@@ -1,8 +1,8 @@
 #ifndef CAT_HPP
 #define CAT_HPP
-#include <Animal.hpp>
+#include "Animal.hpp"
 
-class CAT: public Animal
+class Cat: public Animal
 {
     public:
         Cat();
@@ -10,6 +10,7 @@ class CAT: public Animal
         Cat(const Cat& ob);
         ~Cat();
         Cat& operator= (const Cat& ob);
+        void makeSound();
 };
 
 #endif

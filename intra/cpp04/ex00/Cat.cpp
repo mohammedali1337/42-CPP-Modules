@@ -1,6 +1,6 @@
 #include "Cat.hpp"
 
-Cat::Cat(): Animal()
+Cat::Cat(): Animal("cat")
 {
     std::cout << "default constructor for Cat called" << std::endl;
 }
@@ -29,4 +29,9 @@ Cat& Cat::operator= (const Cat& ob)
     }
     std::cout << "cpy assignment operator for Cat called " << std::endl;
     return *this;
+}
+
+void Cat::makeSound()
+{
+    std::cout << "meooow" << std::endl;
 }
