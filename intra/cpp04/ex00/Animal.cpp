@@ -30,3 +30,10 @@ Animal& Animal::operator= (const Animal& ob)
     std::cout << "cpy assignment operator for Animal called " << std::endl;
     return *this;
 }
+
+std::string Animal::getType() const 
+{
+    return (this->type);
+}
+
+void Animal::makeSound() const{}

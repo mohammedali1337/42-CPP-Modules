@@ -31,7 +31,12 @@ Dog& Dog::operator= (const Dog& ob)
     return *this;
 }
 
-void Dog::makeSound()
+std::string Dog::getType() const 
+{
+    return (this->type);
+}
+
+void Dog::makeSound() const
 {
     std::cout << "3aw 3aw" << std::endl;
 }
