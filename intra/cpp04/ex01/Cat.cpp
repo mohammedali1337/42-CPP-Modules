@@ -2,11 +2,14 @@
 
 Cat::Cat(): Animal("cat")
 {
+    _Brain = new Brain();
     std::cout << "default constructor for " << this->type << " called" << std::endl;
+
 }
 
 Cat::Cat(std::string na): Animal(na)
 {
+    _Brain = new Brain();
     std::cout << "initialezed constructor for " << this->type << " called" << std::endl;
 }
 

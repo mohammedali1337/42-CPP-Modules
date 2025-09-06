@@ -2,23 +2,23 @@
 
 Animal::Animal()
 {
-    std::cout << "default constructor for Animal called" << std::endl;
+    std::cout << "Base class: default constructor for " << this->type << " called " << std::endl;
 }
 
 Animal::Animal(std::string na): type(na)
 {
-    std::cout << "initialezed constructor for Animal is called " << std::endl;
+    std::cout << "Base class: initialezed constructor for " << this->type << " called " << std::endl;
 }
 
 Animal::Animal(const Animal& ob)
 {
     type = ob.type;
-    std::cout << "cpy constructor for Animal is called " << std::endl;
+    std::cout << "Base class: cpy constructor for " << this->type << " called " << std::endl;
 }
 
 Animal::~Animal()
 {
-    std::cout << "destructor for Animal called " << std::endl;
+    std::cout << "Base class: destructor for " << this->type << " called " << std::endl;
 }
 
 Animal& Animal::operator= (const Animal& ob)
@@ -27,7 +27,7 @@ Animal& Animal::operator= (const Animal& ob)
     {
         type = ob.type;
     }
-    std::cout << "cpy assignment operator for Animal called " << std::endl;
+    std::cout << "Base class: assignment operator for " << this->type << " called " << std::endl;
     return *this;
 }
 
@@ -38,5 +38,5 @@ std::string Animal::getType() const
 
 void Animal::makeSound() const
 {
-    std::cout << "Animal made a sound" << std::endl;
+    std::cout << "Base class: Animal " << this->type << " made a sound " << std::endl;
 }

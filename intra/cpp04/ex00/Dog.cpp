@@ -2,11 +2,13 @@
 
 Dog::Dog(): Animal("Dog")
 {
+    _Brain = new Brain();
     std::cout << "default constructor for Dog called" << std::endl;
 }
 
 Dog::Dog(std::string na): Animal(na)
 {
+    _Brain = new Brain();
     std::cout << "initialezed constructor for Dog is called " << std::endl;
 }
 
