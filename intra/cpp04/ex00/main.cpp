@@ -21,7 +21,9 @@ int main()
 
     // WrongAnimal && WrongCat test
 
-    std::cout << std::endl << "WrongAnimal : " << std::endl << std::endl;
+    std::cout << std::endl;
+    std::cout << "WrongAnimal : " << std::endl ;
+    std::cout << std::endl;
 
     const WrongAnimal *WrongOb = new WrongCat();
     std::cout << WrongOb->getType() << " " << std::endl;
