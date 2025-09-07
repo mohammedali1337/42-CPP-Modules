@@ -15,12 +15,14 @@ Cat::Cat(std::string na): Animal(na)
 
 Cat::Cat(const Cat& ob)
 {
+    this->_Brain = new Brain(*ob._Brain);
     type = ob.type;
     std::cout << "cpy constructor for " << this->type << " called" << std::endl;
 }
 
 Cat::~Cat()
 {
+    delete _Brain;
     std::cout << "destructor for " << this->type << " called" << std::endl;
 }
 

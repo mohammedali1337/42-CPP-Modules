@@ -2,22 +2,26 @@
 
 Dog::Dog(): Animal("Dog")
 {
+    _Brain = new Brain();
     std::cout << "default constructor for " << this->type <<" called" << std::endl;
 }
 
 Dog::Dog(std::string na): Animal(na)
 {
+    _Brain = new Brain();
     std::cout << "initialezed constructor for " << this->type << " called" << std::endl;
 }
 
 Dog::Dog(const Dog& ob)
 {
+    this->_Brain = new Brain(*ob._Brain);
     type = ob.type;
     std::cout << "cpy constructor for " << this->type << " called" << std::endl;
 }
 
 Dog::~Dog()
 {
+    delete _Brain;
     std::cout << "destructor for " << this->type << " called"<< std::endl;
 }
 

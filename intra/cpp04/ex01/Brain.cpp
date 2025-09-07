@@ -18,7 +18,16 @@ Brain::~Brain()
 
 Brain& Brain::operator= (const Brain& ob)
 {
-    *this = ob;
+    if (this != &ob)
+    {
+        for (int i = 0; i < 100; i++)
+            this->ideas[i] = ob.ideas[i];
+    }
     std::cout << "assignment operator for Brain called " << std::endl;
     return *this;
+}
+
+std::string Brain::getIdeas() const
+{
+    return (*this->ideas);
 }

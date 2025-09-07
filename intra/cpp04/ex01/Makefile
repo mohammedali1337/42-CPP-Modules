@@ -1,6 +1,6 @@
 C++		= c++ 
-C_F		= -Wall -Wextra -Werror -std=c++98
-SRC		= Animal.cpp Cat.cpp Dog.cpp main.cpp Brain.cpp
+C_F		= -Wall -Wextra -Werror -std=c++98 
+SRC		= Animal.cpp Cat.cpp Dog.cpp main.cpp Brain.cpp 
 OBJ		= $(SRC:.cpp=.o)
 NAME	= EX_01
 
