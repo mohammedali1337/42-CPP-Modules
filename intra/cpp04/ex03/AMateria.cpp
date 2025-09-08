@@ -10,13 +10,6 @@ AMateria::~AMateria(){}
 
 std::string const & AMateria::getType() const {return (this->type);}
 
-AMateria* AMateria::clone() const
-{
-    AMateria *ob = new AMateria(type);
-    return ob;
-}
+// AMateria* AMateria::clone() const {}
 
-void AMateria::use(ICharacter& target)
-{
-    
-}
+void AMateria::use(ICharacter& target) {}
