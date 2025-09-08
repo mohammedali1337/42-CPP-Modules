@@ -3,6 +3,10 @@
 
 class ICharacter
 {
+    protected:
+        ICharacter();
+        ICharacter(const ICharacter& ob);
+        ICharacter& operator= (const ICharacter& ob);
     public:
         virtual ~ICharacter() {}
         virtual std::string const & getName() const = 0;
