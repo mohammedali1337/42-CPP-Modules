@@ -8,8 +8,15 @@ AMateria::AMateria(AMateria const & ob): type(ob.type){}
 
 AMateria::~AMateria(){}
 
-std::string const & AMateria::getType() const {return (this->type);}
+AMateria & AMateria::operator=(const AMateria & ob)
+{
+    if (this != &ob)
+    {
+        this->type = ob.type;
+    }
+    return (*this);
+}
 
-// AMateria* AMateria::clone() const {}
+std::string const & AMateria::getType() const {return (this->type);}
 
 void AMateria::use(ICharacter& target) {}
