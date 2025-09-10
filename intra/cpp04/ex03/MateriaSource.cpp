@@ -8,39 +8,23 @@ MateriaSource::MateriaSource()
 
 MateriaSource::MateriaSource(const MateriaSource& ob)
 {
-    for (int i = 0; i < 4; i++)
-    {
-        if (ob.storage[i])
-            storage[i] = ob.storage[i]->clone();
-        else
-            storage[i] = NULL;
-    }
+    for (int i = 0; i < 4; ++i) storage[i] = NULL;
+    copyStorage(ob);
 }
 
 MateriaSource& MateriaSource::operator=(const MateriaSource& ob)
 {
     if (this != &ob)
     {
-        for (int i = 0; i < 4; i++)
-        {
-            if (storage[i])
-                delete storage[i];
-            if (ob.storage[i])
-                storage[i] = ob.storage[i]->clone();
-            else
-                storage[i] = NULL;
-        }
+        clearStorage();
+        copyStorage(ob);
     }
     return *this;
 }
 
 MateriaSource::~MateriaSource()
 {
-    for (int i = 0; i < 4; i++)
-    {
-        if (storage[i])
-            delete storage[i];
-    }
+    this->clearStorage();
 }
 
 void MateriaSource::learnMateria(AMateria* m)
@@ -65,4 +49,27 @@ AMateria* MateriaSource::createMateria(std::string const & type)
             return storage[i]->clone();
     }
     return NULL;
+}
+
+void MateriaSource::clearStorage()
+{
+    for (int i = 0; i < 4; ++i)
+    {
+        if (storage[i])
+        {
+            delete storage[i];
+            storage[i] = NULL;
+        }
+    }
+}
+
+void MateriaSource::copyStorage(MateriaSource const & other)
+{
+    for (int i = 0; i < 4; ++i)
+    {
+        if (other.storage[i])
+            storage[i] = other.storage[i]->clone();
+        else
+            storage[i] = NULL;
+    }
 }

@@ -6,6 +6,9 @@ class MateriaSource: public IMateriaSource
 {
     private:
         AMateria* storage[4];
+
+        void clearStorage();
+        void copyStorage(MateriaSource const & other);
     public:
         MateriaSource();
         MateriaSource(const MateriaSource& ob);

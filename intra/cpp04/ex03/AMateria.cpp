@@ -19,4 +19,4 @@ AMateria & AMateria::operator=(const AMateria & ob)
 
 std::string const & AMateria::getType() const {return (this->type);}
 
-void AMateria::use(ICharacter& target) {}
+void AMateria::use(ICharacter& target) {(void)target;}

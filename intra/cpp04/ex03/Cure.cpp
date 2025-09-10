@@ -9,16 +9,14 @@ Cure::Cure(const Cure& ob): AMateria(ob) {}
 
 Cure& Cure::operator= (const Cure& ob)
 {
-    if (this != &ob) {
+    if (this != &ob)
             AMateria::operator=(ob);
-        }
         return *this;
 }
 
 AMateria* Cure::clone() const
 {
-    Cure* newCure = new Cure();
-    return newCure;
+    return new Cure(*this);
 }
 
 void Cure::use(ICharacter& target)

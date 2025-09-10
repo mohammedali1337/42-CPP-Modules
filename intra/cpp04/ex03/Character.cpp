@@ -74,13 +74,36 @@ void Character::unequip(int idx)
 {
     if (idx < 0 || idx >= 4)
         return ;
-    if (this->inventory[idx])
-        this->inventory[idx] = NULL;
+    inventory[idx] = NULL;
 }
 
-void Character::use(int idx, ICharacter& target)
+void Character::use(int idx, ICharacter& target )
 {
     if (idx < 0 || idx >= 4)
         return ;
-    this->inventory[idx]->use(target);
+    if (this->inventory[idx])
+        this->inventory[idx]->use(target);
+}
+
+void Character::clearInventory()
+{
+    for (int i = 0; i < 4; ++i)
+    {
+        if (inventory[i])
+        {
+            delete inventory[i];
+            inventory[i] = NULL;
+        }
+    }
+}
+
+void Character::copyInventory(Character const & other)
+{
+    for (int i = 0; i < 4; ++i)
+    {
+        if (other.inventory[i])
+            inventory[i] = other.inventory[i]->clone();
+        else
+            inventory[i] = NULL;
+    }
 }

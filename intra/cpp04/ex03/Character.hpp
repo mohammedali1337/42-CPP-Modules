@@ -8,11 +8,15 @@ class Character : public ICharacter
     private:
         std::string name;
         AMateria* inventory[4];
+
+        void clearInventory();
+        void copyInventory(Character const & other);
     public:
         Character(std::string const & name);
         Character(const Character& other);
         Character& operator=(const Character& ob);
         ~Character();
+
         std::string const & getName() const;
         void equip(AMateria* m);
         void unequip(int idx);
