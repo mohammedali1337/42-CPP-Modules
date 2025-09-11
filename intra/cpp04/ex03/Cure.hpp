@@ -6,7 +6,7 @@ class Cure : public AMateria
 {
     public:
         Cure();
-        virtual ~Cure();
+        ~Cure();
         Cure(const Cure& ob);
         AMateria* clone() const;
 

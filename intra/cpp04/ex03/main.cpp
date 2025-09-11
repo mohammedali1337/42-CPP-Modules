@@ -25,3 +25,10 @@ int main()
     delete src;
     return 0;
 }
+
+// my main
+
+int main(void)
+{
+    IMateriaSource*
+}
