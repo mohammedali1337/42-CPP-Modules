@@ -1,11 +1,14 @@
 NAME = The_Job_Of_Your
-SRC = Account.cpp tests.cpp
+SRC = Account.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
+
+%.o: %.cpp Account.hpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)

@@ -9,8 +9,8 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(C++) $(C++_F) $(OBJ) -o $(NAME)
 
-.o: .cpp
-	$(C++) $(C++_F) $< -c $@
+%.o: %.cpp PhoneBook.hpp Contact.hpp
+	$(C++) $(C++_F) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)

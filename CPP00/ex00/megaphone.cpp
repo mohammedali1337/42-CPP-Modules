@@ -1,25 +1,18 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mgarouj <mgarouj@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/11 08:45:27 by mgarouj           #+#    #+#             */
-/*   Updated: 2025/08/11 09:33:09 by mgarouj          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
+#include <cctype>
 #include <iostream>
 
 int main(int c, char **v)
 {
+    // Check if args exist, otherwise print noise
     if (c == 1)
         std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
-    else{
+    else {
         for (int i = 1; i < c; i++)
+        {
             for (int j = 0; v[i][j]; j++)
+                // toupper returns int, so casting back to char is needed for output
                 std::cout << (char)std::toupper(v[i][j]);
+        }
         std::cout << std::endl;
     }
     return 0;

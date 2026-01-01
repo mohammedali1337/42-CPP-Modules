@@ -1,4 +1,3 @@
-
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 #include "Contact.hpp"
@@ -11,7 +10,11 @@ class PhoneBook
         int     index;
     public:
         PhoneBook();
+
+        // Show list and handle index input
         int    searchContact();
+
+        // Add new contact
         int    addContact();
 };
 
