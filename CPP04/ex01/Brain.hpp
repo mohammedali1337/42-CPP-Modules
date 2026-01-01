@@ -1,6 +1,6 @@
 #ifndef BRAIN_HPP
 #define BRAIN_HPP
-#include "AAnimal.hpp"
+#include "Animal.hpp"
 #include <iostream>
 
 class Brain
@@ -12,7 +12,6 @@ class Brain
         Brain(const Brain& ob);
         ~Brain();
         Brain& operator= (const Brain& ob);
-        void setIdeas(int idx, const std::string& idea);
         std::string getIdeas() const;
 };
 

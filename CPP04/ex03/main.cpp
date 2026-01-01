@@ -25,6 +25,7 @@ int main()
         delete me;
         delete src;
     }
+    std::cout << std::endl << std::endl << std::endl;
     {
         ICharacter* eren = new Character("eren");
         ICharacter* zeke = new Character("zeke");
@@ -55,6 +56,8 @@ int main()
         eren->use(2, *zeke);
         zeke->use(0, *eren);
         zeke->use(2, *eren);
+        eren->use(0, *zeke);
+        eren->use(2, *zeke);
         
         eren->unequip(1);
         zeke->unequip(2);
