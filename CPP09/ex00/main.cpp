@@ -12,11 +12,11 @@ int main(int c, char **v)
 
     BitcoinExchange btc;
     try{
-        btc.run(v[1]);
+        btc.run(v[1]); // any errors should be throw exceptions
     }
     catch(const std::exception& e)
 	{
-		std::cout << e.what() << '\n';
+		std::cout << e.what() << '\n'; 
 	}
     return 0;
 }

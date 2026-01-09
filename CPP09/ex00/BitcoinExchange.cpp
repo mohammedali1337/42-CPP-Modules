@@ -49,54 +49,43 @@ void BitcoinExchange::run(const std::string& filename)
 {
 	std::ifstream file(filename.c_str());
 	if (!file.is_open())
-		throw std::runtime_error("Error: could not open file.");
+		throw std::runtime_error("Error: could not open file."); // if file cannot be opened throw exception
 	
-	std::string line;
+	std::string line; // to store each line
 
 	std::getline(file, line);
 	if (line !=  "date | value")
-		throw std::runtime_error("Error: bad header. ");
+		throw std::runtime_error("Error: bad header. "); // if header is incorrect throw exception
 	
 	while (std::getline(file, line))
 	{
 		if (line.empty())
-			continue;
+			continue; // if line is empty skip go to next line
 		
 		size_t delimiterPos = line.find('|');
 		if (delimiterPos == std::string::npos)
 		{
-			std::cout << "Error: bad input => " << line << std::endl;
+			std::cout << "Error: bad input => " << line << std::endl; // if no delimiter found print error and continue to next line
 			continue;
 		}
 
 		std::string date = trim(line.substr(0, delimiterPos));
 		std::string valueStr = trim(line.substr(delimiterPos + 1));
-
+		// if the date or value is invalid print error and continue to next line
 		if (!isValidDate(date))
-		{
-			std::cout << "Error: bad input => " << date << std::endl;
 			continue;
-		}
 		if (!isValidValue(valueStr))
 			continue;
 		
-		double value = std::strtod(valueStr.c_str(), NULL);
+		double value = std::strtod(valueStr.c_str(), NULL); // we use strtod because cpp98 does not have stod
 		
-		std::map<std::string, double>::const_iterator it = dataBase.lower_bound(date);
-
-		if (it == dataBase.end() || it->first != date)
-		{
-			if (it == dataBase.begin())
-			{
-				std::cout << "Error: date too early => " << date << std::endl;
-				continue;
-			}
-			it--;
-		}
+		std::map<std::string, double>::const_iterator it = dataBase.lower_bound(date); // we use lower_bound to find the closest date
+		if (it->first != date)
+			it--; // if exact date not found go to previous date
 		double result = value * it->second;
 		std::cout << date << " => " << value << " = " << result << std::endl;
 	}
-	file.close();
+	file.close(); // close the file but it will be closed automatically when ifstream object goes out of scope
 }
 
 std::string BitcoinExchange::trim(const std::string& str)
@@ -137,6 +126,11 @@ bool BitcoinExchange::isValidDate(const std::string& date)
 {
 	if (date.length() > 10)
 		return false;
+	for (size_t i = 0; i < date.size(); i++)
+	{
+		if (!std::isdigit(date[i]) && date[i] != '-')
+			return false;
+	}
 	size_t firstDash = date.find('-');
 	size_t secondDash = date.find('-', firstDash + 1);
 	std::string year(date.substr(0, firstDash));
@@ -148,18 +142,35 @@ bool BitcoinExchange::isValidDate(const std::string& date)
 	monthInt = std::atoi(month.c_str());
 	dayInt = std::atoi(day.c_str());
 
-	if (yearInt < 2009 || yearInt > 2025)
+	if (yearInt > 2022)
+	{
+		std::cout << "Error: date too late => " << date << std::endl;
 		return false;
-	if (monthInt < 1 || monthInt > 12)
+	}
+	if (yearInt < 2009)
+	{
+		std::cout << "Error: date too early => " << date << std::endl;
 		return false;
-	if (dayInt < 1 || dayInt > 31)
+	}
+	if (std::count(date.begin(), date.end(), '-') != 2)
 		return false;
+	if (monthInt < 1 || monthInt > 12 || dayInt < 1 || dayInt > 31)
+	{
+		std::cout << "Error: bad input => " << date << std::endl;
+		return false;
+	}
     if (dayInt == 31 && (monthInt == 4 || monthInt == 6 || monthInt == 9 || monthInt == 11))
+	{
+		std::cout << "Error: bad input => " << date << std::endl;
 		return false;
+	}
     if (monthInt == 2) {
         bool isLeap = (yearInt % 4 == 0 && yearInt % 100 != 0) || (yearInt % 400 == 0);
         if (dayInt > (isLeap ? 29 : 28))
-			return false;
+			{
+				std::cout << "Error: bad input => " << date << std::endl;
+				return false;
+			}
     }
 	return true;
 }
