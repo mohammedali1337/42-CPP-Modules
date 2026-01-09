@@ -1,12 +1,12 @@
 #include "Account.hpp"
 #include <iostream>
 #include <ctime>
-
+// Static member initialization
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
-
+// Constructor and Destructor
 Account::Account(int initial_deposit) {
     _accountIndex = _nbAccounts++;
     _amount = initial_deposit;
@@ -26,7 +26,7 @@ void Account::_displayTimestamp(void) {
     std::time_t now = std::time(NULL);
     std::tm *ptm = std::localtime(&now);
     char buffer[20];
-    std::strftime(buffer, sizeof(buffer), "[%Y%m%d_%H%M%S]", ptm);
+    std::strftime(buffer, sizeof(buffer), "[%Y%m%d_%H%M%S]", ptm); // Format: [YYYYMMDD_HHMMSS] for timestamp
     std::cout << buffer;
 }
 
@@ -41,7 +41,7 @@ void Account::displayStatus(void) const {
 }
 
 void Account::makeDeposit(int deposit) {
-    _displayTimestamp();
+    _displayTimestamp(); // Show timestamp 
     std::cout << " index:" << _accountIndex << ";p_amount:" << Account::checkAmount() << ";deposit:" << deposit;
     _amount += deposit;
     _nbDeposits++;
@@ -64,6 +64,7 @@ bool Account::makeWithdrawal(int withdrawal) {
     std::cout << ";withdrawal:" << withdrawal << ";amount:" << Account::checkAmount() << ";nb_withdrawals:" << _nbWithdrawals << std::endl;
     return true;
 }
+// getters for static members
 int Account::getNbAccounts(void)
 {
     return (Account::_nbAccounts);
@@ -80,6 +81,7 @@ int Account::getNbWithdrawals(void)
 {
     return (Account::_totalNbWithdrawals);
 }
+
 int Account::checkAmount(void) const
 {
     return (this->_amount);

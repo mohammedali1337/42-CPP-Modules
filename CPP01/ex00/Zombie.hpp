@@ -12,8 +12,9 @@ class Zombie
         ~Zombie();
         void announce( void );
 };
-
+// newZombie creates a new Zombie on the heap
 Zombie* newZombie( std::string name );
+// randomChump creates a new Zombie on the stack and announces it
 void randomChump( std::string name );
 
 #endif

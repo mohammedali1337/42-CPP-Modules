@@ -1,5 +1,5 @@
 #include "Contact.hpp"
-
+// Setters
 void    Contact::setFirstName(std::string fn)
 {
     this->firstName = fn;
@@ -20,7 +20,7 @@ void    Contact::setdarkestSecret(std::string ds)
 {
     this->darkestSecret = ds;
 }
-
+// Getters
 std::string    Contact::getFirstName() const
 {
     return (this->firstName);

@@ -2,6 +2,7 @@
 
 BitcoinExchange::BitcoinExchange()
 {
+	// we use loadDataBase function to load the database from data.csv file if any error occurs throw exception
 	try
 	{
 		loadDataBase();
@@ -21,20 +22,20 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& ob)
 {
 	if (this != &ob)
 		this->dataBase = ob.dataBase;
-	return *this;
+	return *this; // for chained assignments
 }
 
 BitcoinExchange::~BitcoinExchange(){}
 
 void BitcoinExchange::loadDataBase()
 {
-	std::ifstream file("data.csv");
+	std::ifstream file("data.csv"); // open the database file if not found throw exception
 	if (!file.is_open())
 		throw std::runtime_error("Error: could not open file. ");
 
-	std::string line;
+	std::string line; // to store each line
 
-	std::getline(file, line);
+	std::getline(file, line); // skip the header line
 	while (std::getline(file, line))
 	{
 		size_t pos = line.find(',');
@@ -70,7 +71,7 @@ void BitcoinExchange::run(const std::string& filename)
 		}
 
 		std::string date = trim(line.substr(0, delimiterPos));
-		std::string valueStr = trim(line.substr(delimiterPos + 1));
+		std::string valueStr = trim(line.substr(delimiterPos + 1)); // from delimiter to end of line
 		// if the date or value is invalid print error and continue to next line
 		if (!isValidDate(date))
 			continue;
@@ -90,23 +91,23 @@ void BitcoinExchange::run(const std::string& filename)
 
 std::string BitcoinExchange::trim(const std::string& str)
 {
-	size_t first = str.find_first_not_of(" \t");
+	size_t first = str.find_first_not_of(" \t"); // find first non space or tab character
 	if (std::string::npos == first)
 		return str;
-	size_t last = str.find_last_not_of(" \t");
+	size_t last = str.find_last_not_of(" \t"); // find last non space or tab character
 	return str.substr(first, (last - first + 1));
 }
 
 bool BitcoinExchange::isValidValue(const std::string& valueStr)
 {
-	if (valueStr.empty() || valueStr == ".")
+	if (valueStr.empty()) // check if value string is empty
 	{
 		std::cout << "Error: bad input => " << valueStr << std::endl;
 		return false;
 	}
 	char* endptr;
-	double value = std::strtod(valueStr.c_str(), &endptr);
-	if (*endptr != '\0')
+	double value = std::strtod(valueStr.c_str(), &endptr); // convert string to double and store the address of first invalid character in endptr
+	if (*endptr != '\0') // if last character is not null terminator return false
 	{
 		std::cout << "Error: bad input => " << valueStr << std::endl;
 		return false;
@@ -124,20 +125,20 @@ bool BitcoinExchange::isValidValue(const std::string& valueStr)
 
 bool BitcoinExchange::isValidDate(const std::string& date)
 {
-	if (date.length() > 10)
+	if (date.length() > 10) // if lenght of date is more than 10 return false
 		return false;
 	for (size_t i = 0; i < date.size(); i++)
 	{
-		if (!std::isdigit(date[i]) && date[i] != '-')
+		if (!std::isdigit(date[i]) && date[i] != '-') // if character is not digit or dash return false
 			return false;
 	}
 	size_t firstDash = date.find('-');
-	size_t secondDash = date.find('-', firstDash + 1);
+	size_t secondDash = date.find('-', firstDash + 1); // the second dash position from first dash
 	std::string year(date.substr(0, firstDash));
 	std::string month(date.substr(firstDash + 1, secondDash));
 	std::string day(date.substr(secondDash + 1));
 	int yearInt, monthInt, dayInt;
-
+	// convert year, month, day to integers
 	yearInt = std::atoi(year.c_str());
 	monthInt = std::atoi(month.c_str());
 	dayInt = std::atoi(day.c_str());
@@ -152,9 +153,9 @@ bool BitcoinExchange::isValidDate(const std::string& date)
 		std::cout << "Error: date too early => " << date << std::endl;
 		return false;
 	}
-	if (std::count(date.begin(), date.end(), '-') != 2)
+	if (std::count(date.begin(), date.end(), '-') != 2) // check if there are exactly two dashes
 		return false;
-	if (monthInt < 1 || monthInt > 12 || dayInt < 1 || dayInt > 31)
+	if (monthInt < 1 || monthInt > 12 || dayInt < 1 || dayInt > 31) // check if month and day are in valide range
 	{
 		std::cout << "Error: bad input => " << date << std::endl;
 		return false;
@@ -164,9 +165,10 @@ bool BitcoinExchange::isValidDate(const std::string& date)
 		std::cout << "Error: bad input => " << date << std::endl;
 		return false;
 	}
-    if (monthInt == 2) {
-        bool isLeap = (yearInt % 4 == 0 && yearInt % 100 != 0) || (yearInt % 400 == 0);
-        if (dayInt > (isLeap ? 29 : 28))
+    if (monthInt == 2)
+	{
+        bool isLeap = (yearInt % 4 == 0 && yearInt % 100 != 0) || (yearInt % 400 == 0); // check for leap year
+        if (dayInt > (isLeap ? 29 : 28)) // if year is leap day can be 29 otherwise 28
 			{
 				std::cout << "Error: bad input => " << date << std::endl;
 				return false;

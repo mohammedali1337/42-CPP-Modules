@@ -14,7 +14,7 @@ class ScalarConverter
         ~ScalarConverter();
 
     public:
-        static void convert(std::string literal);
+        static void convert(std::string literal); // this method does the conversion string to scalar types
 };
 
 #endif
