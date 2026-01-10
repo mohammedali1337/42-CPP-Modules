@@ -11,6 +11,7 @@ $(NAME): $(OBJS)
 
 %.o: %.cpp PmergeMe.hpp
 	 	$(CXX) $(CXX_F) -c $< -o $@
+
 clean:
 	rm -f $(OBJS)
 
