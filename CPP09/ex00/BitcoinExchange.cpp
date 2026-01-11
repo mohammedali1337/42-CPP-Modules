@@ -126,7 +126,10 @@ bool BitcoinExchange::isValidValue(const std::string& valueStr)
 bool BitcoinExchange::isValidDate(const std::string& date)
 {
 	if (date.length() > 10) // if lenght of date is more than 10 return false
+	{
+		std::cout << "Error: bad input => " << date << std::endl;
 		return false;
+	}
 	for (size_t i = 0; i < date.size(); i++)
 	{
 		if (!std::isdigit(date[i]) && date[i] != '-') // if character is not digit or dash return false
@@ -154,7 +157,10 @@ bool BitcoinExchange::isValidDate(const std::string& date)
 		return false;
 	}
 	if (std::count(date.begin(), date.end(), '-') != 2) // check if there are exactly two dashes
+	{
+		std::cout << "Error: bad input => " << date << std::endl;
 		return false;
+	}
 	if (monthInt < 1 || monthInt > 12 || dayInt < 1 || dayInt > 31) // check if month and day are in valide range
 	{
 		std::cout << "Error: bad input => " << date << std::endl;
