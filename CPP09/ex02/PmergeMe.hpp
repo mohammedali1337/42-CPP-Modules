@@ -11,25 +11,28 @@
 
 class PmergeMe
 {
-    private:
-        std::vector<int> _vectorData;
-        std::deque<int> _dequeData;
+private:
+    std::vector<int> _printVector;
+    std::vector<int> _vectorData;
+    std::deque<int> _dequeData;
 
-        void _parseNumber(int c, char **v);
+    void _parseNumber(int c, char **v);
+    clock_t _parseNumberV(int c, char **v);
+    clock_t _parseNumberD(int c, char **v);
 
-        int _getJacobsthal(int n);
-        
-        void _mergeInsertSortVector(std::vector<int>& arr);
-        void _insertInVector(std::vector<int>& mainChain, std::vector<int>& pendChain);
+    int _getJacobsthal(int n);
 
-        void _mergeInsertSortDeque(std::deque<int>& arr);
-        void _insertInDeque(std::deque<int>& mainChain, std::deque<int>& pendChain);
+    void _mergeInsertSortVector(std::vector<int> &arr);
+    void _insertInVector(std::vector<int> &mainChain, std::vector<int> &pendChain);
 
-    public:
-        PmergeMe();
-        PmergeMe(const PmergeMe& ob);
-        PmergeMe& operator=(const PmergeMe& ob);
-        ~PmergeMe();
-        
-        void run(int c, char **v);
+    void _mergeInsertSortDeque(std::deque<int> &arr);
+    void _insertInDeque(std::deque<int> &mainChain, std::deque<int> &pendChain);
+
+public:
+    PmergeMe();
+    PmergeMe(const PmergeMe &ob);
+    PmergeMe &operator=(const PmergeMe &ob);
+    ~PmergeMe();
+
+    void run(int c, char **v);
 };
