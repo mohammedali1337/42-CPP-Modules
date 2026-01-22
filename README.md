@@ -1,15 +1,3 @@
-ALI
-mohammedali1615
-Online
-
-This is the start of the #github channel. 
-ALI — 4:48 PM
-https://gprm.itsvg.in/
-GPRM : GitHub Profile ReadMe Maker
-Best Profile Generator, Create your perfect GitHub Profile ReadMe in the best possible way. Lots of features and tools included, all for free !
-Image
-ALI — 10:50 PM
-``````
 # 42 School - C++ (CPP) Modules
 
 This repository contains the C++ (CPP) modules completed as part of the curriculum at 42 School. Each module consists of a series of exercises designed to reinforce and expand my knowledge of C++ programming concepts, ranging from basic OOP to advanced STL algorithms.
@@ -272,5 +260,3 @@ Follow these steps to run the exercises on your local machine.
 1. **Clone the repository:**
    ```bash
    git clone [git clone https://github.com/mohammedali1337/42-CPP-Modules.git]
-message.txt
-6 KB
