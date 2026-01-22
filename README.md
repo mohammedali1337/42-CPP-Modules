@@ -31,5 +31,4 @@ Each module has its own directory and `Makefile`. To test a specific exercise:
 
 ### 1. Clone the repository
 ```bash
-git clone [https://github.com/YOUR_USERNAME/42-CPP-Modules.git](https://github.com/YOUR_USERNAME/42-CPP-Modules.git)
-cd 42-CPP-Modules
+git clone https://github.com/mohammedali1337/42-CPP-Modules.git
