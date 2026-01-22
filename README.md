@@ -8,7 +8,7 @@
 This repository contains my solutions for the **C++ Piscine** at 42 School (1337).
 The goal of this curriculum is to dive deep into **Object-Oriented Programming (OOP)**, understand memory management, and master the C++98 standard.
 
-> **Note:** All exercises are compiled with `c++ -Wall -Wextra -Werror -std=c++98`.
+> **Note:** All exercises are compiled with strict flags: `c++ -Wall -Wextra -Werror -std=c++98`.
 
 ## 📚 Modules Overview
 
@@ -23,11 +23,13 @@ The goal of this curriculum is to dive deep into **Object-Oriented Programming (
 | **CPP 06** | **C++ Casts** (`static`, `dynamic`, `reinterpret`, `const`), Serialization. |
 | **CPP 07** | **Templates**, Generic programming (Functions & Classes). |
 | **CPP 08** | **STL Containers** (`vector`, `list`, `deque`), Iterators, Algorithms. |
-| **CPP 09** | **Advanced STL**, Ford-Johnson Algorithm, Reverse Polish Notation. |
+| **CPP 09** | **Advanced STL**, Ford-Johnson Algorithm, Reverse Polish Notation (RPN). |
 
 ## 🛠️ Usage
-Each module has its own directory and Makefile. To test a specific exercise:
 
-1. Navigate to the directory:
-   ```bash
-   cd CPP01/ex00
+Each module has its own directory and `Makefile`. To test a specific exercise:
+
+### 1. Clone the repository
+```bash
+git clone [https://github.com/YOUR_USERNAME/42-CPP-Modules.git](https://github.com/YOUR_USERNAME/42-CPP-Modules.git)
+cd 42-CPP-Modules
