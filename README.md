@@ -26,7 +26,7 @@ The goal of this curriculum is to dive deep into **Object-Oriented Programming (
 | **CPP 09** | **Advanced STL**, Ford-Johnson Algorithm, Reverse Polish Notation. |
 
 ## 🛠️ Usage
-Each module has its own directory. To test a specific exercise:
+Each module has its own directory and Makefile. To test a specific exercise:
 
 1. Navigate to the directory:
    ```bash
