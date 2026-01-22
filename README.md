@@ -156,4 +156,4 @@ Follow these steps to run the exercises on your local machine.
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/mohammedali1337/42-CPP-Modules.git](https://github.com/mohammedali1337/42-CPP-Modules.git)
+   git clone https://github.com/mohammedali1337/42-CPP-Modules.git
